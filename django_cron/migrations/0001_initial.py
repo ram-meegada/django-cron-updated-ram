@@ -37,9 +37,9 @@ class Migration(migrations.Migration):
             ],
             options={
                 'indexes': [
-                    models.Index(fields=['code', 'is_success', 'ran_at_time']),
-                    models.Index(fields=['code', 'start_time', 'ran_at_time']),
-                    models.Index(fields=['code', 'start_time']),
+                    models.Index(fields=['code', 'is_success', 'ran_at_time'], name='idx_code_success_ran'),
+                    models.Index(fields=['code', 'start_time', 'ran_at_time'], name='idx_code_start_ran'),
+                    models.Index(fields=['code', 'start_time'], name='idx_code_start'),
                 ],
             },
         ),
