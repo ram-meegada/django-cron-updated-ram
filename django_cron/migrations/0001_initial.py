@@ -6,6 +6,8 @@ from django.db import models, migrations
 
 class Migration(migrations.Migration):
 
+    initial = True
+
     dependencies = []
 
     operations = [
@@ -33,15 +35,12 @@ class Migration(migrations.Migration):
                     ),
                 ),
             ],
-        ),
-        migrations.AlterIndexTogether(
-            name='cronjoblog',
-            index_together=set(
-                [
-                    ('code', 'is_success', 'ran_at_time'),
-                    ('code', 'start_time', 'ran_at_time'),
-                    ('code', 'start_time'),
-                ]
-            ),
+            options={
+                'indexes': [
+                    models.Index(fields=['code', 'is_success', 'ran_at_time']),
+                    models.Index(fields=['code', 'start_time', 'ran_at_time']),
+                    models.Index(fields=['code', 'start_time']),
+                ],
+            },
         ),
     ]
